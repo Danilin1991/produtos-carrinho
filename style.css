@@ -26,10 +26,9 @@ h2 {
 
 .desserts-grid {
 	display: grid;
-	grid-template-columns: repeat(
-		auto-fit,
-		minmax(250px, 1fr)
-	); /* Ajusta o número de colunas */
+	grid-template-columns: repeat(auto-fit,
+			minmax(250px, 1fr));
+	/* Ajusta o número de colunas */
 	gap: 20px;
 	width: 100%;
 }
@@ -42,8 +41,10 @@ h2 {
 	overflow: hidden;
 	padding: 15px;
 	box-sizing: border-box;
-	width: 100%; /* Garante que o item ocupe todo o espaço disponível */
-	max-width: 300px; /* Define uma largura máxima para os itens */
+	width: 100%;
+	/* Garante que o item ocupe todo o espaço disponível */
+	max-width: 300px;
+	/* Define uma largura máxima para os itens */
 }
 
 .dessert-item img {
@@ -124,10 +125,9 @@ h2 {
 /* Media Queries para melhorar a responsividade */
 @media (max-width: 768px) {
 	.desserts-grid {
-		grid-template-columns: repeat(
-			auto-fit,
-			minmax(200px, 1fr)
-		); /* Ajusta o número de colunas em telas menores */
+		grid-template-columns: repeat(auto-fit,
+				minmax(200px, 1fr));
+		/* Ajusta o número de colunas em telas menores */
 	}
 
 	.icon-add-to-cart {
@@ -146,10 +146,9 @@ h2 {
 
 @media (max-width: 480px) {
 	.desserts-grid {
-		grid-template-columns: repeat(
-			auto-fit,
-			minmax(150px, 1fr)
-		); /* Ajusta o número de colunas para telas muito pequenas */
+		grid-template-columns: repeat(auto-fit,
+				minmax(150px, 1fr));
+		/* Ajusta o número de colunas para telas muito pequenas */
 	}
 
 	.icon-add-to-cart {

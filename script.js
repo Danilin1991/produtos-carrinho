@@ -16,8 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			const id = itemElement.dataset.id;
 			const name = itemElement.querySelector("h4").innerText;
+
 			const price = parseFloat(
-				itemElement.querySelector("p:last-child").innerText.replace("$", "")
+				itemElement.querySelector("#price").innerText.replace("$", "")
 			);
 
 			addToCart(id, name, price);
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (existingItem) {
 			existingItem.quantity++;
 		} else {
-			cart.push({id, name, price, quantity: 1});
+			cart.push({ id, name, price, quantity: 1 });
 		}
 		updateCartDisplay();
 	}
