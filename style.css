@@ -122,6 +122,102 @@ h2 {
 	cursor: pointer;
 }
 
+
+
+
+.cart-item .remove {
+	background-color: #e67e22;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.cart-item .remove:hover {
+	background-color: #e67e22;
+}
+
+
+
+
+.cart-items {
+	max-height: 400px;
+	/* Ajuste a altura máxima conforme necessário */
+	overflow-y: auto;
+	/* Permitir rolagem se houver muitos itens */
+}
+
+.cart-total {
+	margin-top: 10px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.cart-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+.cart-item .remove {
+	background-color: #f44336;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.cart-container {
+	position: fixed;
+	top: 10px;
+	/* Ajuste a posição superior conforme necessário */
+	right: 10px;
+	/* Ajuste a posição à direita conforme necessário */
+	width: 300px;
+	/* Ajuste a largura conforme necessário */
+	background-color: #fff;
+	border-radius: 12px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	z-index: 1000;
+	/* Certifique-se de que o carrinho esteja acima de outros elementos */
+}
+.cart-items {
+	max-height: 400px;
+	/* Ajuste a altura máxima conforme necessário */
+	overflow-y: auto;
+	/* Permitir rolagem se houver muitos itens */
+}
+
+.cart-total {
+	margin-top: 10px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.cart-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+.cart-item .remove {
+	background-color: #e67e22;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.cart-item .remove:hover {
+	background-color:#e67e22;
+}
+
 /* Media Queries para melhorar a responsividade */
 @media (max-width: 768px) {
 	.desserts-grid {

@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			cartItem.classList.add("cart-item");
 			cartItem.innerHTML = `
 				<span>${item.name} - $${item.price} x ${item.quantity}</span>
-				<button class="remove" data-id="${item.id}">Remove</button>
+				<button class="remove" data-id="${item.id}">Remover Item</button>
 			`;
 			cartItems.appendChild(cartItem);
 		});
