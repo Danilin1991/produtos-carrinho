@@ -3,36 +3,51 @@ document.addEventListener("DOMContentLoaded", () => {
 	const cartTotal = document.querySelector(".cart-total p");
 	let cart = [];
 
-	document.querySelectorAll(".icon-add-to-cart").forEach((button) => {
+	// Adiciona eventos de clique para os botões de quantidade
+	document.querySelectorAll(".quantity-button").forEach((button) => {
 		button.addEventListener("click", (event) => {
-			event.preventDefault();
-			console.log("Button clicked");
-
+			const action = button.dataset.action;
 			const itemElement = button.closest(".dessert-item");
-			if (!itemElement) {
-				console.error("Item element not found");
-				return;
-			}
+			if (!itemElement) return;
 
 			const id = itemElement.dataset.id;
 			const name = itemElement.querySelector("h4").innerText;
+			const price = parseFloat(itemElement.querySelector("#price").innerText.replace("$", ""));
+			const quantitySpan = itemElement.querySelector(".quantity");
+			let quantity = parseInt(quantitySpan.innerText);
 
-			const price = parseFloat(
-				itemElement.querySelector("#price").innerText.replace("$", "")
-			);
+			if (action === "+") {
+				quantity++;
+				addToCart(id, name, price, quantity);
+			} else if (action === "-" && quantity > 0) {
+				quantity--;
+				updateCartQuantity(id, quantity);
+			}
 
-			addToCart(id, name, price);
+			quantitySpan.innerText = quantity;
 		});
 	});
 
-	function addToCart(id, name, price) {
+	function addToCart(id, name, price, quantity) {
 		const existingItem = cart.find((item) => item.id === id);
 		if (existingItem) {
-			existingItem.quantity++;
+			existingItem.quantity += quantity;
 		} else {
-			cart.push({ id, name, price, quantity: 1 });
+			cart.push({ id, name, price, quantity });
 		}
 		updateCartDisplay();
+	}
+
+	function updateCartQuantity(id, quantity) {
+		const item = cart.find((item) => item.id === id);
+		if (item) {
+			if (quantity === 0) {
+				cart = cart.filter((item) => item.id !== id);
+			} else {
+				item.quantity = quantity;
+			}
+			updateCartDisplay();
+		}
 	}
 
 	function updateCartDisplay() {
@@ -44,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			const cartItem = document.createElement("div");
 			cartItem.classList.add("cart-item");
 			cartItem.innerHTML = `
-				<span>${item.name} - $${item.price} x ${item.quantity}</span>
-				<button class="remove" data-id="${item.id}">Remover Item</button>
-			`;
+                <span>${item.name} - $${item.price} x ${item.quantity}</span>
+                <button class="remove" data-id="${item.id}">Remover Item</button>
+            `;
 			cartItems.appendChild(cartItem);
 		});
 
