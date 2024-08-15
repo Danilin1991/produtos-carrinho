@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// Seletores para o carrinho e suas funções
 	const cartItems = document.querySelector(".cart-items");
 	const cartTotal = document.querySelector(".cart-total p");
 	const cart = {};
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (!cart[id]) {
 			cart[id] = { name, price, quantity: 0 };
 		}
-		cart[id].quantity += quantity;
+		cart[id].quantity = quantity;
 		updateCart();
 	}
 
@@ -46,12 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			if (button.dataset.action === "+") {
 				quantity++;
 				quantitySpan.textContent = quantity;
-				addToCart(id, dessertItem.querySelector("h4").textContent, parseFloat(dessertItem.querySelector(".price").textContent.replace('$', '')), quantity);
 			} else if (button.dataset.action === "-" && quantity > 0) {
 				quantity--;
 				quantitySpan.textContent = quantity;
-				addToCart(id, dessertItem.querySelector("h4").textContent, parseFloat(dessertItem.querySelector(".price").textContent.replace('$', '')), quantity);
 			}
+
+			const price = parseFloat(dessertItem.querySelector(".price").textContent.replace('$', ''));
+			addToCart(id, dessertItem.querySelector("h4").textContent, price, quantity);
 		});
 	});
 
@@ -64,7 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			const quantity = parseInt(quantitySpan.textContent);
 
 			if (quantity > 0) {
-				addToCart(id, dessertItem.querySelector("h4").textContent, parseFloat(dessertItem.querySelector(".price").textContent.replace('$', '')), quantity);
+				const price = parseFloat(dessertItem.querySelector(".price").textContent.replace('$', ''));
+				addToCart(id, dessertItem.querySelector("h4").textContent, price, quantity);
 			}
 		});
 	});
