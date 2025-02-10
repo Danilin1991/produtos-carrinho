@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				quantitySpan.textContent = quantity;
 			}
 
-			const price = parseFloat(dessertItem.querySelector(".price").textContent.replace('$', ''));
-			addToCart(id, dessertItem.querySelector("h4").textContent, price, quantity);
+			//const price = parseFloat(dessertItem.querySelector(".price").textContent.replace('$', ''));
+			// addToCart(id, dessertItem.querySelector("h4").textContent, price, quantity);
 		});
 	});
 
@@ -63,9 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			const quantitySpan = dessertItem.querySelector(".quantity");
 			const quantity = parseInt(quantitySpan.textContent);
 
-			if (quantity > 0) {
-				const price = parseFloat(dessertItem.querySelector(".price").textContent.replace('$', ''));
-				addToCart(id, dessertItem.querySelector("h4").textContent, price, quantity);
+			//if (quantity > 0) {
+			const price = parseFloat(dessertItem.querySelector(".price").textContent.replace('$', ''));
+			addToCart(id, dessertItem.querySelector("h4").textContent, price, quantity);
+			if (quantity === 0) {
+				delete cart[id];
+				updateCart();
 			}
 		});
 	});

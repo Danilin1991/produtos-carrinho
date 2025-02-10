@@ -7,24 +7,38 @@ body {
 	padding: 0;
 }
 
+.page-container {
+	display: flex;
+	flex-direction: row;
+	gap: 24px;
+	width: 100%;
+
+}
+
 .container {
-	max-width: 1200px;
-	margin: 0 auto;
+	max-width: 70%;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 }
 
 h2 {
-	text-align: center;
+	text-align: flex-start;
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 16px;
+	margin-top: 0;
 }
 
+.cart {
+	max-width: 30%;
+}
+
+
 .desserts-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 	gap: 20px;
 	width: 100%;
 }
@@ -122,20 +136,17 @@ h2 {
 }
 
 .cart {
-	position: fixed;
-	top: 20px;
-	right: 20px;
-	width: 90%;
-	max-width: 350px;
-	padding: 20px;
+	position: relative;
 	background-color: #fff;
 	border-radius: 12px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-	z-index: 1000;
+	height: 80vh;
+	padding: 32px;
 }
 
 .cart h3 {
 	margin-bottom: 20px;
+	margin-top: 0;
 }
 
 .cart-items {
@@ -196,14 +207,10 @@ h2 {
 /* Media Queries para melhorar a responsividade */
 @media (max-width: 768px) {
 	.cart {
-		width: 80%;
-		right: 10%;
+		width: 100%;
 	}
-}
 
-@media (max-width: 480px) {
-	.cart {
-		width: 95%;
-		right: 2.5%;
+	.page-container {
+		flex-direction: column;
 	}
 }
